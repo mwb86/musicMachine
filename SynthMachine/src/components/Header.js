@@ -6,7 +6,7 @@ class Header extends Component{
     return (
       <header>
       <h1>Music Machine</h1>
-      <img src={logo} className="App-logo" alt="logo" />
+      <img src={logo} className="animated infinite bounce App-logo" alt="logo" />
 
       </header>
     )
