@@ -32,18 +32,26 @@
 #machineInstrumentBox{
   border: solid 5px grey;
   height: 400px;
-
+  display: flex;
+}
+#timeAt0{
+  border: solid 2px red;
+  width:10%
 }
 #noteBody{
   background-color: tan;
   /*display:inline-block;*/
   display: block;
   flex-direction:column;
-  width:10%;
+  width:80%;
   margin-left: 10px;
   margin-right: 10px;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+#playbutton{
+  width:100px;
+  background-color: grey
 }

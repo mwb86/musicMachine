@@ -4,7 +4,7 @@ import logo from '../logo.svg';
 class Header extends Component{
   render(){
     return (
-      <header>
+      <header id="bla">
       <h1>Music Machine</h1>
       <img src={logo} className="animated infinite bounce App-logo" alt="logo" />
 

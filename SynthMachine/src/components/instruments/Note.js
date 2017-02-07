@@ -7,12 +7,12 @@ var synth = new Tone.PolySynth(4, Tone.MonoSynth).toMaster();
 class Note extends Component{
   runSound(){
       console.log("run props sound "+ this.props.sound);
-    // synth.triggerAttackRelease("G4", "16n")
+    synth.triggerAttackRelease(this.props.sound, "16n")
   }
   render(){
     return (
       <div id="noteBody">
-            <h1 ><button onClick={() => {this.runSound()}}>Sound</button ></h1>
+            <h1 ><button onClick={() => {this.runSound()}}>Sound {this.props.sound}</button ></h1>
       </div>
     )
   }
