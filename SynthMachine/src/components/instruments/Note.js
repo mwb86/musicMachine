@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 // import {Link} from 'react-router'
 import Tone from 'tone';
 // var Tone = require("Tone");
-import BeatOne from '../BeatOne'
+import Beat from '../Beat'
 import Machine from '../Machine'
+var Sound = require('react-sound');
+
 var synth = new Tone.PolySynth(6, Tone.MonoSynth).toMaster();
 class Note extends Component{
 
@@ -13,6 +15,10 @@ class Note extends Component{
 
         Tone.Transport.schedule(function(time){
             synth.triggerAttackRelease(sound, '4n')
+            Tone.Draw.schedule(function(){
+	           }, time)
+            // var player = new Tone.Player("BDOOOO.mp3").toMaster();
+            // player.autostart = true;
         }, this.props.time);
   }
 

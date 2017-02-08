@@ -9,7 +9,7 @@
 }
 .animated {
   -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  animation-duration: .5s;
 
 }
 .App-header {
@@ -34,7 +34,7 @@
   height: 400px;
   display: flex;
 }
-#timeAt0{
+#timeColumn{
   border: solid 2px red;
   width:7%
 }
