@@ -2,13 +2,20 @@ import React, {Component} from 'react';
 // import {Link} from 'react-router'
 import Tone from 'tone';
 // var Tone = require("Tone");
-
-var synth = new Tone.PolySynth(4, Tone.MonoSynth).toMaster();
+import BeatOne from '../BeatOne'
+import Machine from '../Machine'
+var synth = new Tone.PolySynth(6, Tone.MonoSynth).toMaster();
 class Note extends Component{
-  runSound(){
+
+  runSound = () => {
       console.log("run props sound "+ this.props.sound);
-    synth.triggerAttackRelease(this.props.sound, "16n")
+      var sound = this.props.sound;
+
+        Tone.Transport.schedule(function(time){
+            synth.triggerAttackRelease(sound, '4n')
+        }, this.props.time);
   }
+
   render(){
     return (
       <div id="noteBody">

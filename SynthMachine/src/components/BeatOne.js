@@ -9,11 +9,11 @@ class BeatOne extends Component{
   render(){
     return (
       <header id="bla">
-      <Note sound="240"/>
-      <Note sound="340"/>
-      <Note sound="440"/>
-      <Note sound="540"/>
-      <Note sound="640"/>
+      <Note sound="240" time={this.props.time} />
+      <Note sound="340" time={this.props.time}/>
+      <Note sound="440" time={this.props.time}/>
+      <Note sound="540" time={this.props.time}/>
+      <Note sound="640" time={this.props.time}/>
       </header>
     )
   }
