@@ -12,14 +12,13 @@ class Note extends Component{
   super();
   this.state = {
     isItOn: false,
-    event: {}
+    event: {isItOn: false}
   };
 }
   runSound = () => {
-      console.log(Tone.Transport.schedule)
       console.log("run props sound "+ this.props.sound);
       var sound = this.props.sound;
-
+      var state = this.state;
       // var event = Tone.Transport.schedule(function(time){
       //       synth.triggerAttackRelease(sound, '4n')
       //       Tone.Draw.schedule(function(){
@@ -27,7 +26,7 @@ class Note extends Component{
 	    //        }, time)
       //   }, this.props.time);
 
-      if(this.isItOn === false){
+      if(state.isItOn === false){
           this.event = Tone.Transport.schedule(function(time){
                 synth.triggerAttackRelease(sound, '4n')
                 Tone.Draw.schedule(function(){
@@ -35,7 +34,7 @@ class Note extends Component{
                  }, time)
             }, this.props.time)
             console.log(this.event)
-            this.isItOn = true;
+            state.isItOn = true;
       }
       else{
         var time = Tone.Transport.now()
@@ -44,7 +43,7 @@ class Note extends Component{
         Tone.Draw.schedule(function(){
           document.getElementById("machineBody").style.background = "white";
         }, time)
-        this.isItOn = false;
+        state.isItOn = false;
       }
   }
 
