@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-// import {Link} from 'react-router'
 import Tone from 'tone';
 import Note from './instruments/Note'
 import Beat from './Beat'
-// var Tone = require("Tone");
 var synth = new Tone.PolySynth(6, Tone.MonoSynth).toMaster();
+
 class Machine extends Component{
   playLoop(){
     Tone.Transport.start();
@@ -12,14 +11,21 @@ class Machine extends Component{
     Tone.Transport.loopStart = 0;
     Tone.Transport.loopEnd = 4;
     Tone.Transport.bpm.value = 120;
-    console.log(Tone.Transport.loop)
-
   }
-  pauseLoop() {
-    Tone.Transport.pause()
+  pauseLoop(){
+    Tone.Transport.pause();
   }
   stopLoop(){
     Tone.Transport.stop()
+  }
+  clearLoop(){
+    // Tone.Transport.cancel([0]) crashes browser?
+  }
+  increaseBPM(){
+    Tone.Transport.bpm.value += 20;
+  }
+  decreaseBPM(){
+    Tone.Transport.bpm.value -= 20;
   }
   render(){
     return (
@@ -27,6 +33,10 @@ class Machine extends Component{
         <button id="playbutton" onClick={this.playLoop}>Play</button>
         <button id="playbutton" onClick={this.pauseLoop}>Pause</button>
         <button id="playbutton" onClick={this.stopLoop}>Stop</button>
+        <button id="playbutton" onClick={this.clearLoop}>Erase</button>
+        <button id="playbutton" onClick={this.increaseBPM}>Increase BPM by 20</button>
+        <button id="playbutton" onClick={this.decreaseBPM}>Decrease BPM by 20</button>
+
           <div id="machineInstrumentBox">
               <div id="timeColumn"><Beat time="0:0"/></div>
               <div id="timeColumn"><Beat time="0:1"/></div>

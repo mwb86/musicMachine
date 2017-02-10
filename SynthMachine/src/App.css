@@ -1,47 +1,33 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  /*animation: App-logo-spin infinite 20s linear;*/
-  /*animation-duration: 100s;*/
-  height: 80px;
-  margin:0 auto;
-}
 #title{
   margin:0 auto;
   display:flex;
-  flex-flow: row;
-
+  font-size:100%;
+  font-family: 'Barrio', cursive;
 }
 body{
   background: grey;
 }
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: .5s;
-
-}
 .App-header {
+  text-align: center;
   background-color: #222;
   height: 50px;
   padding: 20px;
   color: white;
 }
-
-.App-intro {
-  font-size: large;
-
-}
 #bla{
-  display:flex;
+  height: 100%;
+  font-size:50px;
+  font-family: 'Barrio', cursive;
+  align-self: center;
 }
 #machineBody{
   border: solid 10px black;
   height: 100%;
   width:90%;
   margin:0 auto;
-  /*margin: 10% 10%;*/
   display:block;
   background: white;
 }
@@ -51,25 +37,21 @@ body{
   display: flex;
 }
 #timeColumn{
-  border: solid 2px red;
+  border: solid 5px black;
   width:100%;
 }
 #noteBody{
-  background-color: tan;
-  /*display:inline-block;*/
+  background-color: black;
   display: block;
   flex-direction:column;
   width:100%;
 padding: 1px;
-border: solid 2px black;
-}
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/*border: solid 2px black;*/
 }
 #buttons{
   width:100%;
-  height:50px;
+  background: grey;
+  height:60px;
 }
 #buttons:active{
   background: blue;
@@ -79,5 +61,11 @@ border: solid 2px black;
   color:white;
   background-color: darkblue;
   border-radius: 10px;
-  margin: 10px 10px;
+  margin: 2px 10px;
+}
+
+#buttons1{
+  background:red;
+  height:60px;
+  width:100%
 }
