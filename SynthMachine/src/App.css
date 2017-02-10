@@ -6,6 +6,16 @@
   /*animation: App-logo-spin infinite 20s linear;*/
   /*animation-duration: 100s;*/
   height: 80px;
+  margin:0 auto;
+}
+#title{
+  margin:0 auto;
+  display:flex;
+  flex-flow: row;
+
+}
+body{
+  background: grey;
 }
 .animated {
   -webkit-animation-duration: 1s;
@@ -14,7 +24,7 @@
 }
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 50px;
   padding: 20px;
   color: white;
 }
@@ -23,35 +33,51 @@
   font-size: large;
 
 }
+#bla{
+  display:flex;
+}
 #machineBody{
   border: solid 10px black;
   height: 100%;
-  margin: 10% 10%;
+  width:90%;
+  margin:0 auto;
+  /*margin: 10% 10%;*/
   display:block;
+  background: white;
 }
 #machineInstrumentBox{
   border: solid 5px grey;
-  height: 400px;
+  height: 90%;
   display: flex;
 }
 #timeColumn{
   border: solid 2px red;
-  width:7%
+  width:100%;
 }
 #noteBody{
   background-color: tan;
   /*display:inline-block;*/
   display: block;
   flex-direction:column;
-  width:70%;
-  margin-left: 10px;
-  margin-right: 10px;
+  width:100%;
+padding: 1px;
+border: solid 2px black;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+#buttons{
+  width:100%;
+  height:50px;
+}
+#buttons:active{
+  background: blue;
+}
 #playbutton{
   width:100px;
-  background-color: grey
+  color:white;
+  background-color: darkblue;
+  border-radius: 10px;
+  margin: 10px 10px;
 }

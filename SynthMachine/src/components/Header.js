@@ -5,9 +5,10 @@ class Header extends Component{
   render(){
     return (
       <header id="bla">
-      <h1>Music Machine</h1>
-      <img src={logo} className="animated infinite bounce App-logo" alt="logo" />
+      <div id="title">
+      <div>Music Machine</div>
 
+      </div>
       </header>
     )
   }
@@ -15,3 +16,4 @@ class Header extends Component{
 
 export default Header
         // <h1><Link to={'/todos'}>React Todos</Link></h1>
+      // <img src={logo} className="animated infinite bounce App-logo" alt="logo" />

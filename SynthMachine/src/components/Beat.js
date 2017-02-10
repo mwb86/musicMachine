@@ -9,7 +9,7 @@ class Beat extends Component{
   }
   render(){
     return (
-      <header id="bla">
+      <header>
       <Note sound={sounds[0]} time={this.props.time} />
       <Note sound={sounds[1]} time={this.props.time}/>
       <Note sound={sounds[2]} time={this.props.time}/>

@@ -28,6 +28,7 @@ class Machine extends Component{
         <button id="playbutton" onClick={this.pauseLoop}>Pause</button>
         <button id="playbutton" onClick={this.stopLoop}>Stop</button>
           <div id="machineInstrumentBox">
+              <div id="timeColumn"><Beat time="0:0"/></div>
               <div id="timeColumn"><Beat time="0:1"/></div>
               <div id="timeColumn"><Beat time="0:2"/></div>
               <div id="timeColumn"><Beat time="0:3"/></div>
@@ -35,7 +36,6 @@ class Machine extends Component{
               <div id="timeColumn"><Beat time="1:1"/></div>
               <div id="timeColumn"><Beat time="1:2"/></div>
               <div id="timeColumn"><Beat time="1:3"/></div>
-              <div id="timeColumn"><Beat time="1:4"/></div>
           </div>
       </div>
     )
