@@ -8,7 +8,7 @@ class Machine extends Component{
   constructor(){
     super();
     this.state = {
-
+      notes: ["540","560","580","600","620"]
     }
   }
   playLoop(){
@@ -33,6 +33,11 @@ class Machine extends Component{
   decreaseBPM(){
     Tone.Transport.bpm.value -= 20;
   }
+  addNote(){
+    var length = this.state.notes.length;
+    this.state.notes[length] = "540";
+    this.setState({notes: this.state.notes});
+};
   render(){
     var notes = this.state.notes;
     return (
@@ -43,16 +48,16 @@ class Machine extends Component{
         <button id="playbutton" onClick={this.clearLoop}>Erase</button>
         <button id="playbutton" onClick={this.increaseBPM}>Increase BPM by 20</button>
         <button id="playbutton" onClick={this.decreaseBPM}>Decrease BPM by 20</button>
-
+        <button id="playbutton" onClick={ () => {this.addNote()}}>Add Note</button>
           <div id="machineInstrumentBox">
               <div id="timeColumn"><Beat notes={notes} time="0:0"/></div>
-              <div id="timeColumn"><Beat time="0:1"/></div>
-              <div id="timeColumn"><Beat time="0:2"/></div>
-              <div id="timeColumn"><Beat time="0:3"/></div>
-              <div id="timeColumn"><Beat time="1:0"/></div>
-              <div id="timeColumn"><Beat time="1:1"/></div>
-              <div id="timeColumn"><Beat time="1:2"/></div>
-              <div id="timeColumn"><Beat time="1:3"/></div>
+              <div id="timeColumn"><Beat notes={notes} time="0:1"/></div>
+              <div id="timeColumn"><Beat notes={notes} time="0:2"/></div>
+              <div id="timeColumn"><Beat notes={notes} time="0:3"/></div>
+              <div id="timeColumn"><Beat notes={notes} time="1:0"/></div>
+              <div id="timeColumn"><Beat notes={notes} time="1:1"/></div>
+              <div id="timeColumn"><Beat notes={notes} time="1:2"/></div>
+              <div id="timeColumn"><Beat notes={notes} time="1:3"/></div>
           </div>
       </div>
     )

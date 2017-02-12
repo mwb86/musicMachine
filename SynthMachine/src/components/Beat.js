@@ -6,23 +6,19 @@ import ReactDOM from 'react-dom'
 // var sounds =["440", "460", "480", "500", "520"]
 class Beat extends Component{
   constructor(props) {
-      super();
+      super(props);
       this.state = {
-      notes: ["540","560","580","600","620"]
+      notes: this.props.notes
     }
       }
-  addNote(){
-    var length = this.state.notes.length;
-    this.state.notes[length] = "540";
-    console.log(this.state.notes)
-    this.setState({notes: this.state.notes});
-};
+
 
   render(){
     var time = this.props.time;
+    console.log(this.props.notes)
     return (
           <div>
-          <button onClick={ () => {this.addNote()}}>Add Note</button>
+
            <header>
                {this.state.notes.map(function(note, index){
                    return <Note sound={note} time={time}/>;
