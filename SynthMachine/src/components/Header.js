@@ -4,7 +4,7 @@ class Header extends Component{
   render(){
     return (
       <header id="bla">
-      Music Machine
+      Music Machine <button id="test">button</button>
       </header>
     )
   }

@@ -5,6 +5,12 @@ import Beat from './Beat'
 var synth = new Tone.PolySynth(6, Tone.MonoSynth).toMaster();
 
 class Machine extends Component{
+  constructor(){
+    super();
+    this.state = {
+
+    }
+  }
   playLoop(){
     Tone.Transport.start();
     Tone.Transport.loop = true;
@@ -19,7 +25,7 @@ class Machine extends Component{
     Tone.Transport.stop()
   }
   clearLoop(){
-    // Tone.Transport.cancel([0]) crashes browser?
+      Tone.Transport.cancel(0)
   }
   increaseBPM(){
     Tone.Transport.bpm.value += 20;
@@ -28,6 +34,7 @@ class Machine extends Component{
     Tone.Transport.bpm.value -= 20;
   }
   render(){
+    var notes = this.state.notes;
     return (
       <div id="machineBody">
         <button id="playbutton" onClick={this.playLoop}>Play</button>
@@ -38,7 +45,7 @@ class Machine extends Component{
         <button id="playbutton" onClick={this.decreaseBPM}>Decrease BPM by 20</button>
 
           <div id="machineInstrumentBox">
-              <div id="timeColumn"><Beat time="0:0"/></div>
+              <div id="timeColumn"><Beat notes={notes} time="0:0"/></div>
               <div id="timeColumn"><Beat time="0:1"/></div>
               <div id="timeColumn"><Beat time="0:2"/></div>
               <div id="timeColumn"><Beat time="0:3"/></div>
