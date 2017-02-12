@@ -8,15 +8,20 @@ class Machine extends Component{
   constructor(){
     super();
     this.state = {
-      notes: ["540","560","580","600","620"]
+      notes: ["523","622","698","784","932","1047"],
+      time:["0:0","0:1","0:2","0:3","1:0","1:1","1:2","1:3"],
+      note:""
     }
   }
   playLoop(){
     Tone.Transport.start();
+    if(Tone.Transport.loop === true){}
+    else{
     Tone.Transport.loop = true;
     Tone.Transport.loopStart = 0;
     Tone.Transport.loopEnd = 4;
     Tone.Transport.bpm.value = 120;
+  }
   }
   pauseLoop(){
     Tone.Transport.pause();
@@ -33,11 +38,15 @@ class Machine extends Component{
   decreaseBPM(){
     Tone.Transport.bpm.value -= 20;
   }
-  addNote(){
+  addNote(event){
     var length = this.state.notes.length;
-    this.state.notes[length] = "540";
-    this.setState({notes: this.state.notes});
-};
+    console.log(event.target.value)
+    this.state.notes[length] = event.target.value;
+    // this.setState({notes: [this.state.notes + event.target.value]});
+}
+handleSubmit(event) {
+  event.preventDefault();
+}
   render(){
     var notes = this.state.notes;
     return (
@@ -49,15 +58,22 @@ class Machine extends Component{
         <button id="playbutton" onClick={this.increaseBPM}>Increase BPM by 20</button>
         <button id="playbutton" onClick={this.decreaseBPM}>Decrease BPM by 20</button>
         <button id="playbutton" onClick={ () => {this.addNote()}}>Add Note</button>
+        <form onSubmit={ () => {this.addNote(event)}}>
+          <label>
+            Pick note:
+            <select value={this.state.note} onChange={ () => {this.addNote(event)}}>
+              <option value="540">540</option>
+              <option value="560">560</option>
+              <option value="580">580</option>
+              <option value="600">600</option>
+            </select>
+          </label>
+          <input type="submit" value="Submit" />
+           </form>
           <div id="machineInstrumentBox">
-              <div id="timeColumn"><Beat notes={notes} time="0:0"/></div>
-              <div id="timeColumn"><Beat notes={notes} time="0:1"/></div>
-              <div id="timeColumn"><Beat notes={notes} time="0:2"/></div>
-              <div id="timeColumn"><Beat notes={notes} time="0:3"/></div>
-              <div id="timeColumn"><Beat notes={notes} time="1:0"/></div>
-              <div id="timeColumn"><Beat notes={notes} time="1:1"/></div>
-              <div id="timeColumn"><Beat notes={notes} time="1:2"/></div>
-              <div id="timeColumn"><Beat notes={notes} time="1:3"/></div>
+              {this.state.time.map(function(time, index){
+                  return <div id="timeColumn"><Beat notes={notes} time={time}/></div>;
+                })}
           </div>
       </div>
     )

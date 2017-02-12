@@ -20,6 +20,7 @@ class Note extends Component {
     runSound = () => {
         var sound = this.props.sound;
         var state = this.state;
+
         this.setState({ isItOn : !this.state.isItOn} );
         console.log(this.state)
 
@@ -28,7 +29,7 @@ class Note extends Component {
           console.log(this.props.sound)
             // synth.triggerAttackRelease(sound, '4n')
             this.event = Tone.Transport.schedule(function(time) {
-                // synth.triggerAttackRelease(sound, '8n')
+                synth.triggerAttackRelease(sound, '4n')
                 Tone.Draw.schedule(function() {
                     document.getElementById("bla").style.background = "#" + Math.floor(Math.random() * (999999));
                 }, time)
