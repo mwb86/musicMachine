@@ -1,3 +1,16 @@
+The goal of this project is to create a drum pad synthesizer. The user will be able to add notes to their list of instruments that can be played on each beat of the loop. This loop currently has 8 beats. To turn a note on the user clicks the note and than it will play on the next time the loop plays. This note can be turned off by clicking the same spot.
+
+This app uses the create react app command to create the basic file set. Tone.js was added for music functionality like loop, synthesizer sounds and BPM control. Firebase was added for database functionality so the note set is saved.
+
+A few things are currently not working. The user can not add notes directly to the database without accessing it on firebase. the user can not enter custom notes. the user can not edit notes. the user can not delete notes. all users are currently using one database so a user id needs to be created so everyone has their own drum pad. the erase button removes all notes from the loop timeline but it does not turn off their visual cue that they have been clicked. 
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
@@ -911,7 +924,7 @@ This feature is experimental and still [has major usage issues](https://github.c
 
 ### Editor Integration
 
-If you use [Visual Studio Code](https://code.visualstudio.com), there is a [Jest extension](https://github.com/orta/vscode-jest) which works with Create React App out of the box. This provides a lot of IDE-like features while using a text editor: showing the status of a test run with potential fail messages inline, starting and stopping the watcher automatically, and offering one-click snapshot updates. 
+If you use [Visual Studio Code](https://code.visualstudio.com), there is a [Jest extension](https://github.com/orta/vscode-jest) which works with Create React App out of the box. This provides a lot of IDE-like features while using a text editor: showing the status of a test run with potential fail messages inline, starting and stopping the watcher automatically, and offering one-click snapshot updates.
 
 ![VS Code Jest Preview](https://cloud.githubusercontent.com/assets/49038/20795349/a032308a-b7c8-11e6-9b34-7eeac781003f.png)
 

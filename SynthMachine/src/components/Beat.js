@@ -23,30 +23,40 @@ class Beat extends Component{
         const noteRef = rootRef.child('notes');
         noteRef.on('value', snap => {
           this.setState({
-            notes: snap.val()
+            notes: Object.values(snap.val())
           });
-        
         });
+
       }
 
   render(){
     var time = this.props.time;
-    // console.log(this.props.notes)
+
     return (
           <div>
 
            <header>
-               {this.state.notes.map(function(note, index){
-                   return <Note sound={note} time={time}/>;
-                 })}
+              {this.state.notes.map(function(note, index){
+                  return <Note sound={note} time={time}/>;
+                })}
            </header>
           </div>
     )
+
   }
 }
 export default Beat
 
-
+// return (
+//       <div>
+//
+//        <header>
+//        {this.state.notes.map(function(note, index){
+//            return <Note sound={note} time={time}/>;
+//          })}
+//        </header>
+//       </div>
+// )
 
 // class Beat extends Component{
 //   constructor(props) {
