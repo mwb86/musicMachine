@@ -23,20 +23,19 @@ class Beat extends Component{
         const noteRef = rootRef.child('notes');
         noteRef.on('value', snap => {
           this.setState({
-            notes: Object.values(snap.val())
+            notes: snap.val()
           });
         });
-
       }
 
   render(){
     var time = this.props.time;
-
+    var notesValues = Object.values(this.state.notes)
     return (
           <div>
 
            <header>
-              {this.state.notes.map(function(note, index){
+              {notesValues.map(function(note, index){
                   return <Note sound={note} time={time}/>;
                 })}
            </header>

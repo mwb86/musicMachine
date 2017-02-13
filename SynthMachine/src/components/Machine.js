@@ -22,16 +22,18 @@ class Machine extends Component{
       notes: {},
       // notes: ["523","622","698","784","932","1047"],
       time:["0:0","0:1","0:2","0:3","1:0","1:1","1:2","1:3"],
-      note:{}
+      note:{},
+      id:{}
     }
   }
-  componentWillMount(){
+  componentDidMount(){
     const rootRef = firebase.database().ref().child('react');
     const noteRef = rootRef.child('notes');
     noteRef.on('value', snap => {
       this.setState({
         notes: snap.val()
       });
+      console.log(snap.val())
     });
   }
   playLoop(){
@@ -60,42 +62,40 @@ class Machine extends Component{
     Tone.Transport.bpm.value -= 20;
   }
 
-  // writeNoteData(event) {
-  // firebase.database().ref('notes/' + noteID).set({
-  //  note = event.target.value,
-  // });
+  addNote(event){
+    const rootRef = firebase.database().ref().child('react');
+    const noteRef = rootRef.child('notes');
+    noteRef.push(event.target.value)
+  }
 
-//     var newNote = {
-//       id: this.state.notes.length+1,
-//       notes: event.target.value
-//     }
-//
-// this.FirebaseRef.push(newNote);
-//
-// this.setState({notes: this.state.notes.concat(newNote)});
-    // var length = this.state.notes.length;
-    // console.log(event.target.value)
-    // this.state.notes[length] = event.target.value;
-    // this.setState({notes: [this.state.notes + event.target.value]});
-// }
-addNote(event){
-  // firebase.database().ref('react/notes/' + id).set({
-  // id:this.state.notes.length,
-  // note:string
-  // });
-//   const rootRef = firebase.database().ref().child('react');
-//
-// console.log("hi")
-//     rootRef.set({
-//       notes: ["523","566","610"]
-//     });
-const rootRef = firebase.database().ref().child('react');
-const noteRef = rootRef.child('notes');
-noteRef.push(event.target.value)
+  deleteNote(event){
+    console.log(this)
+    const rootRef = firebase.database().ref().child('react');
+    const noteRef = rootRef.child('notes');
+    noteRef.child(this.state.id).remove()
+
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+  }
+
+  createDropDownOptions(){
+    var notesValues = Object.values(this.state.notes)
+    var notesKeys = Object.keys(this.state.notes)
+    console.log(notesKeys)
+    let items = [];
+   for (let i = 0; i <= notesKeys.length; i++) {
+        items.push(<option key={notesValues[i]} value={notesKeys[i]}>{notesValues[i]}</option>);
+   }
+   return items;
+  }
+  onDropdownSelected(e) {
+    this.setState({id: e.target.value})
+    console.log("THE VAL", e.target.value);
+    //here you will see the current selected value of the select input
 }
-handleSubmit(event) {
-  event.preventDefault();
-}
+
   render(){
     var notes = this.state.notes;
     return (
@@ -111,14 +111,29 @@ handleSubmit(event) {
          <label>
            Add a note
            <select value={this.state.note} onChange={this.addNote}>
-             <option value="560">560</option>
-             <option value="580">580</option>
-             <option value="600">600</option>
-             <option value="620">620</option>
+             <option value="">notes</option>
+             <option value="523">523</option>
+             <option value="622">622</option>
+             <option value="698">698</option>
+             <option value="784">784</option>
+             <option value="932">932</option>
+             <option value="1047">1047</option>
+
            </select>
          </label>
-         <input type="submit" value="Submit" />
+
        </form>
+
+       <form onSubmit={this.deleteNote.bind(this)}>
+        <label>
+          Delete a note
+          <select value={this.state.id} onChange={this.onDropdownSelected.bind(this)}>
+            {this.createDropDownOptions()}
+          </select>
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+
           <div id="machineInstrumentBox">
               {this.state.time.map(function(time, index){
                   return <div id="timeColumn"><Beat time={time}/></div>;
@@ -130,6 +145,20 @@ handleSubmit(event) {
 }
 
 export default Machine
+
+// <form onSubmit={this.handleSubmit}>
+//  <label>
+//    Delete a note
+//    <select value={this.state.note} onChange={this.deleteNote}>
+//      <option value="560">560</option>
+//      <option value="580">580</option>
+//      <option value="600">600</option>
+//      <option value="620">620</option>
+//    </select>
+//  </label>
+//  <input type="submit" value="Submit" />
+// </form>
+
 
         // <button id="playbutton" onClick={ () => {this.addNote()}}>Add Note</button>
 
