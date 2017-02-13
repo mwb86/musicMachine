@@ -5,20 +5,21 @@ import Beat from './Beat'
 
 // var firebase = require("firebase");
 
-// import * as firebase from 'firebase';
-// var config = {
-//   apiKey: "AIzaSyAkz3W8RkzM5mrIq7KEdf_mETUJZ8T4mTU",
-//   authDomain: "synthmachine-bd1fc.firebaseapp.com",
-//   databaseURL: "https://synthmachine-bd1fc.firebaseio.com",
-//   storageBucket: "synthmachine-bd1fc.appspot.com",
-//   messagingSenderId: "475974057289"
-// };
+import * as firebase from 'firebase';
+var config = {
+  apiKey: "AIzaSyAkz3W8RkzM5mrIq7KEdf_mETUJZ8T4mTU",
+  authDomain: "synthmachine-bd1fc.firebaseapp.com",
+  databaseURL: "https://synthmachine-bd1fc.firebaseio.com",
+  storageBucket: "synthmachine-bd1fc.appspot.com",
+  messagingSenderId: "475974057289"
+};
 //   firebase.initializeApp(config);
   // var firebase = require("firebase");
 class Machine extends Component{
   constructor(){
     super();
     this.state = {
+      notes: [],
       // notes: ["523","622","698","784","932","1047"],
       time:["0:0","0:1","0:2","0:3","1:0","1:1","1:2","1:3"]
     }
@@ -76,6 +77,19 @@ class Machine extends Component{
     // this.state.notes[length] = event.target.value;
     // this.setState({notes: [this.state.notes + event.target.value]});
 // }
+addNote(id,note){
+  // firebase.database().ref('react/notes/' + id).set({
+  // id:this.state.notes.length,
+  // note:string
+  // });
+  const rootRef = firebase.database().ref().child('react');
+
+console.log("hi")
+    rootRef.set({
+      notes: ["523","566","610"]
+    });
+
+}
 handleSubmit(event) {
   event.preventDefault();
 }
