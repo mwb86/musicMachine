@@ -1,21 +1,37 @@
 import React, {Component} from 'react'
 import Note from './instruments/Note'
-import Tone from 'tone';
-import ReactDOM from 'react-dom'
 // var synth = new Tone.PolySynth(6, Tone.MonoSynth).toMaster();
 // var sounds =["440", "460", "480", "500", "520"]
+import * as firebase from 'firebase';
+var config = {
+  apiKey: "AIzaSyAkz3W8RkzM5mrIq7KEdf_mETUJZ8T4mTU",
+  authDomain: "synthmachine-bd1fc.firebaseapp.com",
+  databaseURL: "https://synthmachine-bd1fc.firebaseio.com",
+  storageBucket: "synthmachine-bd1fc.appspot.com",
+  messagingSenderId: "475974057289"
+};
+  firebase.initializeApp(config);
 class Beat extends Component{
-  constructor(props) {
-      super(props);
+  constructor() {
+      super();
       this.state = {
-      notes: this.props.notes
+      notes: []
     }
       }
-
+      componentDidMount(){
+        const rootRef = firebase.database().ref().child('react');
+        const noteRef = rootRef.child('notes');
+        noteRef.on('value', snap => {
+          this.setState({
+            notes: snap.val()
+          });
+        
+        });
+      }
 
   render(){
     var time = this.props.time;
-    console.log(this.props.notes)
+    // console.log(this.props.notes)
     return (
           <div>
 

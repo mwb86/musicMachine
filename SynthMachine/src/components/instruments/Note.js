@@ -2,9 +2,9 @@ import React, {
     Component
 } from 'react';
 import Tone from 'tone';
-import Beat from '../Beat'
-import Machine from '../Machine'
-var Sound = require('react-sound');
+
+
+
 
 var synth = new Tone.PolySynth(6, Tone.MonoSynth).toMaster();
 class Note extends Component {
@@ -29,7 +29,7 @@ class Note extends Component {
           console.log(this.props.sound)
             // synth.triggerAttackRelease(sound, '4n')
             this.event = Tone.Transport.schedule(function(time) {
-                synth.triggerAttackRelease(sound, '4n')
+                synth.triggerAttackRelease(sound, '8n')
                 Tone.Draw.schedule(function() {
                     document.getElementById("bla").style.background = "#" + Math.floor(Math.random() * (999999));
                 }, time)
@@ -50,14 +50,14 @@ class Note extends Component {
             return (
               <div id="noteBody">
               <h1> < button id="buttons"
-              onClick = { () => {this.runSound()}}>{this.props.sound}</button></h1>
+              onClick={ () => {this.runSound()}}>{this.props.sound}</button></h1>
               </div>
             );
         } else {
             return (
               <div id="noteBody">
               <h1> < button id="buttons1"
-              onClick = { () => {this.runSound()}}>{this.props.sound}</button></h1>
+              onClick={ () => {this.runSound()}}>{this.props.sound}</button></h1>
               </div>
             );
         }
